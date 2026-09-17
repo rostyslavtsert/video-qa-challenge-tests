@@ -13,6 +13,14 @@ class DetailScreen {
     return $('id=video_state_label');
   }
 
+  get errorMessage() {
+    return $('id=video_error_message');
+  }
+
+  get retryButton() {
+    return $('id=video_retry_button');
+  }
+
   async startPlayback() {
     await $('id=video_play_button').click();
   }

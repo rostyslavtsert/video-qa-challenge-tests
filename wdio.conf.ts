@@ -9,9 +9,14 @@ declare global {
 }
 
 const appPath = process.env.APP_PATH;
+const videoMode = process.env.VIDEO_MODE ?? 'normal';
 
 if (!appPath) {
   throw new Error('APP_PATH must point to VideoQAChallenge-debug.apk');
+}
+
+if (!['normal', 'buffering', 'error', 'completeQuickly'].includes(videoMode)) {
+  throw new Error(`Unsupported VIDEO_MODE: ${videoMode}`);
 }
 
 export const config: WebdriverIO.Config = {
@@ -32,7 +37,7 @@ export const config: WebdriverIO.Config = {
       'appium:disableIdLocatorAutocompletion': true,
       'appium:optionalIntentArguments':
         '--ez resetAllState true --es contentMode success --ei contentDelayMs 0 ' +
-        '--es videoMode normal --ei videoBufferingMs 0',
+        `--es videoMode ${videoMode} --ei videoBufferingMs 0`,
     },
   ],
   services: ['appium'],

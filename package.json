@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test:mandatory": "wdio run ./wdio.conf.ts --spec ./test/specs/mandatory-flow.spec.ts",
+    "test:risk": "VIDEO_MODE=error wdio run ./wdio.conf.ts --spec ./test/specs/playback-error.spec.ts",
     "test:smoke": "wdio run ./wdio.conf.ts --spec ./test/specs/consent.smoke.spec.ts",
     "typecheck": "tsc --noEmit"
   },

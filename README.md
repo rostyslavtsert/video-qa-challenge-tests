@@ -14,5 +14,29 @@ Android mobile test automation for Video QA Challenge using Appium, WebdriverIO,
 
 Install dependencies:
 
-```bash
+~~~bash
 npm install
+~~~
+
+Run TypeScript checks:
+
+~~~bash
+npm run typecheck
+~~~
+
+Run the mandatory flow:
+
+~~~bash
+APP_PATH=/absolute/path/to/VideoQAChallenge-debug.apk npm run test:mandatory
+~~~
+
+The application is launched from a deterministic reset state.
+
+The mandatory flow:
+
+- accepts consent;
+- verifies the content overview;
+- opens `Amsterdam from above` using its stable content ID;
+- verifies the correct detail page;
+- starts video playback;
+- waits for the observable player state to reach `Playing` using WebdriverIO assertions.
